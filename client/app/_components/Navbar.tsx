@@ -48,7 +48,7 @@ export default function Navbar() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'About', href: '/about' },
+    { name: 'About', href: '#about' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -60,7 +60,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-navy text-white sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex-shrink-0">
             <h1 className="text-2xl font-bold tracking-wide">JustHoney</h1>
@@ -72,7 +72,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="hover:text-gold transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  className="hover:text-gold transition-colors px-1 py-2 rounded-md text-md font-medium"
                 >
                   {item.name}
                 </Link>

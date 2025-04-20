@@ -11,3 +11,16 @@
       @apply transition-colors duration-300;
     }
   }
+
+  @layer utilities {
+    .transition-theme {
+      @apply transition-colors [transform:translateZ(0)];
+    }
+  }
+
+  @layer base {
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem; /* Adjust based on your header height */
+    }
+  }

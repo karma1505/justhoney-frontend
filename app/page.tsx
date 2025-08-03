@@ -1,226 +1,75 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import HoneyVarieties from "./components/ui/honey-varieties";
-
-interface Founder {
-  name: string;
-  role: string;
-  designation: string;
-  image: string;
-}
-
-const founders: Founder[] = [
-  {
-    name: "Ekta Upadhyay",
-    role: "Beekeeping & Production",
-    designation: "Co-Founder, CEO",
-    image: "/founders/ekta.jpg",
-  },
-  {
-    name: "Madhu",
-    role: "Full Time Queen Bee, Part Time Mascot",
-    designation: "Head of Operations",
-    image: "/founders/madhu.jpg",
-  },
-  {
-    name: "Karmanya Singh",
-    role: "Customer Experience",
-    designation: "Co-Founder, CTO",
-    image: "/founders/karmanya.jpg",
-  },
-];
+// TEMPORARILY DISABLED - SITE UNDER MAINTENANCE
+// All main page content has been commented out to prevent errors
+// while the site is being developed and APIs are not yet ready
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden text-gray-800 dark:text-gray-100 transition-theme duration-theme">
-      {/* Hero Section */}
-      <section className="relative bg-primary dark:bg-dark py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold text-secondary dark:text-gold mb-6 font-montserrat"
-          >
-            Pure Organic Honey From The Heart Of India
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-800 dark:text-gray-200 font-montserrat"
-          >
-            Discover nature&apos;s sweetness with our 100% NATURAL, CHEMICAL and ADULTERATION-FREE honey. Sustainably harvested, from hive to bottle.
-          </motion.p>
-          <Link
-            href="/shop"
-            className="inline-block text-gray-800 dark:text-dark px-8 py-3 rounded-lg bg-gold hover:bg-yellow-600 transition-colors"
-          >
-            Shop Now
-          </Link>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <div className="max-w-md mx-auto text-center">
 
-      {/* Featured Products */}
-      <section className="py-16 bg-light dark:bg-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary dark:text-gold mb-12">
-            Our Popular Variants
-          </h2>
-          <HoneyVarieties />
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-16 bg-white dark:bg-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-primary dark:text-gold mb-12"
-          >
-            Who We Are
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mb-16 text-center max-w-4xl mx-auto"
-          >
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-            Our story begins with Ekta Upadhyay, an IT professional who traded her professions for honey in 2022. After a life-changing encounter with urban beekeeping at her pomegranate orchard, she ditched her laptop for a bee suit and founded JustHoney with one mission: 
-            <span className="text-gold block mt-4">&ldquo;Make honey great again!&rdquo;</span>
-            </p>
-
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-  Meet Madhu, our sassy queen bee mascot who rules our buzzing headquarters. This 🐝-con (see what we did there?) keeps our hive productive with her 
-  <span className="text-gold"> &ldquo;work-hard, nectar-harder&rdquo;</span> philosophy. 
-  <span className="block mt-4">Pro tip: Never challenge her to a honey-tasting contest - she&apos;s undefeated since 2022!</span>
-</p>
-
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              What started as a small apiary in Ekta&apos;s orchards now spans all over India, with Karmanya Singh joining as CTO in 2021 to buzzify our tech. Together, this dynamic duo (plus our 50,000+ winged employees) have shipped nearly over 10000 jars across 8 countries!
-            </p>
-          </motion.div>
-
-          {/* Founders Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {founders.map((founder) => (
-              <motion.div
-                key={founder.name}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white dark:bg-white dark:text-black rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="relative h-64 w-full">
-                  <Image
-                    src={founder.image}
-                    alt={founder.name}
-                    fill
-                    className="object-cover rounded-t-xl"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-primary">
-                    {founder.name}
-                  </h3>
-                  <p className="text-accent mt-2">{founder.designation}</p>
-                  <p className="text-gray-600 mt-4 text-sm">{founder.role}</p>
-                </div>
-              </motion.div>
-            ))}
+        {/* Maintenance Icon */}
+        <div className="mb-8">
+          <div className="w-24 h-24 bg-gray rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg 
+              className="w-12 h-12 text-amber-600" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" 
+              />
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
+              />
+            </svg>
           </div>
         </div>
-      </section>
 
-      {/* Timeline Section */}
-      <section className="relative py-16">
-        <h3 className="text-3xl font-bold text-primary dark:text-gold mb-8 text-center">
-          Our Buzzing Growth
-        </h3>
-
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gold"></div>
-
-          {[  
-            {
-              year: "2022",
-              title: "First Hive To Home Experience",
-              description:
-                "First order recieved from Gurgaon, Haryana. By the end of opening week, we had 124 customers... ",
-              image: "/timeline/first-hive.jpg",
-            },
-            {
-              year: "2023",
-              title: "Expanded Delivery To Delhi-NCR",
-              description:
-                "As word spread about our honey&apos;s exceptional quality, demand quickly grew beyond our immediate circle...",
-              image: "/timeline/delhi-ncr.jpg",
-            },
-            {
-              year: "2024",
-              title: "Pan-India Operations",
-              description:
-                "This was our breakthrough year as we established customers from 18 states in India...",
-              image: "/timeline/pan-india.jpg",
-            },
-            {
-              year: "2025",
-              title: "Global Honey Domination",
-              description:
-                "Today, JustHoney has evolved into India’s premier ethical honey brand with a global footprint...",
-              image: "/timeline/global.jpg",
-            },
-          ].map((item) => (
-            <div
-              key={item.year}
-              className="h-screen flex flex-col justify-center relative"
-            >
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-gold flex items-center justify-center text-white font-bold text-xl z-10">
-                {item.year}
-              </div>
-
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                  <div className="w-full md:w-1/2 md:pr-12 mb-8 md:mb-0">
-                    <div className="sticky top-24">
-                      <h4 className="text-2xl font-bold text-primary dark:text-gold mb-4">
-                        {item.title}
-                      </h4>
-                      <div className="prose text-gray-600 dark:text-gray-300">
-                        <p>{item.description}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-full md:w-1/2">
-                    <div className="sticky top-24">
-                      <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-xl">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          className="object-cover transition-transform duration-500 hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Main Content */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            We&apos;re Making Things Better
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Our hive is buzzing with activity as we work to bring you the sweetest honey experience. 
+            We&apos;re upgrading our systems to serve you better.
+          </p>
+          
+          <div className="bg-white rounded-lg p-6 shadow-sm border border-black">
+            <h3 className="font-semibold text-amber-800 mb-3">What&apos;s Happening?</h3>
+            <ul className="text-sm text-gray-600 space-y-2 text-left">
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-2">•</span>
+                Upgrading our e-commerce platform
+              </li>
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-2">•</span>
+                Adding new honey varieties
+              </li>
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-2">•</span>
+                Improving payment processing
+              </li>
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-2">•</span>
+                Enhancing customer experience
+              </li>
+              <li className="flex items-start">
+                <span className="text-amber-500 mr-2">•</span>
+                There might be some links or features that may not work now. But you can always place your order through the phone number.
+              </li>
+            </ul>
+          </div>
         </div>
-
-        <p className="mt-10 text-center text-gray-600 dark:text-gray-300 italic">
-          *Madhu claims 100% credit for our success. We let her think that - nobody argues with the queen!
-        </p>
-      </section>
+      </div>
     </div>
   );
 }

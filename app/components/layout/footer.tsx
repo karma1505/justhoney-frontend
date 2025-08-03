@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">About JustHoney</h3>
             <p className="text-sm mb-4">
-              Based in Pune, we're committed to delivering pure, unadulterated honey 
+              Based in Pune, we&apos;re committed to delivering pure, unadulterated honey 
               straight from local apiaries.
             </p>
             <div className="flex space-x-4">

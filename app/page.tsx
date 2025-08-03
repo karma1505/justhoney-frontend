@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import HoneyVarieties from "./_components/HoneyVarieties";
+import HoneyVarieties from "./components/ui/honey-varieties";
 
 interface Founder {
   name: string;
@@ -51,7 +51,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-800 dark:text-gray-200 font-montserrat"
           >
-            Discover nature's sweetness with our 100% NATURAL, CHEMICAL and ADULTERATION-FREE honey. Sustainably harvested, from hive to bottle.
+            Discover nature&apos;s sweetness with our 100% NATURAL, CHEMICAL and ADULTERATION-FREE honey. Sustainably harvested, from hive to bottle.
           </motion.p>
           <Link
             href="/shop"
@@ -91,29 +91,29 @@ export default function Home() {
           >
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Our story begins with Ekta Upadhyay, an IT professional who traded her professions for honey in 2022. After a life-changing encounter with urban beekeeping at her pomegranate orchard, she ditched her laptop for a bee suit and founded JustHoney with one mission: 
-            <span className="text-gold block mt-4">"Make honey great again!"</span>
+            <span className="text-gold block mt-4">&ldquo;Make honey great again!&rdquo;</span>
             </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
   Meet Madhu, our sassy queen bee mascot who rules our buzzing headquarters. This 🐝-con (see what we did there?) keeps our hive productive with her 
-  <span className="text-gold"> "work-hard, nectar-harder"</span> philosophy. 
-  <span className="block mt-4">Pro tip: Never challenge her to a honey-tasting contest - she's undefeated since 2022!</span>
+  <span className="text-gold"> &ldquo;work-hard, nectar-harder&rdquo;</span> philosophy. 
+  <span className="block mt-4">Pro tip: Never challenge her to a honey-tasting contest - she&apos;s undefeated since 2022!</span>
 </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              What started as a small apiary in Ekta's orchards now spans all over India, with Karmanya Singh joining as CTO in 2021 to buzzify our tech. Together, this dynamic duo (plus our 50,000+ winged employees) have shipped nearly over 10000 jars across 8 countries!
+              What started as a small apiary in Ekta&apos;s orchards now spans all over India, with Karmanya Singh joining as CTO in 2021 to buzzify our tech. Together, this dynamic duo (plus our 50,000+ winged employees) have shipped nearly over 10000 jars across 8 countries!
             </p>
           </motion.div>
 
           {/* Founders Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {founders.map((founder, index) => (
+            {founders.map((founder) => (
               <motion.div
                 key={founder.name}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
+                transition={{ delay: 0.2 }}
                 className="bg-white dark:bg-white dark:text-black rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="relative h-64 w-full">
@@ -159,7 +159,7 @@ export default function Home() {
               year: "2023",
               title: "Expanded Delivery To Delhi-NCR",
               description:
-                "As word spread about our honey's exceptional quality, demand quickly grew beyond our immediate circle...",
+                "As word spread about our honey&apos;s exceptional quality, demand quickly grew beyond our immediate circle...",
               image: "/timeline/delhi-ncr.jpg",
             },
             {
@@ -176,7 +176,7 @@ export default function Home() {
                 "Today, JustHoney has evolved into India’s premier ethical honey brand with a global footprint...",
               image: "/timeline/global.jpg",
             },
-          ].map((item, index) => (
+          ].map((item) => (
             <div
               key={item.year}
               className="h-screen flex flex-col justify-center relative"

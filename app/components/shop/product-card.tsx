@@ -1,7 +1,8 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { HeartIcon } from '@heroicons/react/24/outline';
-import { Product } from '../utils/api';
+import { Product } from '../../types/api';
 
 export default function ProductCard({ product }: { product: Product }) {
     const mainImage = product.images.sort((a, b) => a.sort_order - b.sort_order)[0]?.image_url;
@@ -13,10 +14,12 @@ export default function ProductCard({ product }: { product: Product }) {
         <Link href={`/shop/${product.slug}`} className="group">
             <div className="bg-white dark:bg-dark-light rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="relative h-64">
-                    <img
+                    <Image
                         src={mainImage || '/default-product.jpg'}
                         alt={product.name}
-                        className="w-full h-full object-cover rounded-t-xl"
+                        fill
+                        className="object-cover rounded-t-xl"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <button 
                         className="absolute top-2 right-2 p-2 bg-white/90 rounded-full"
@@ -30,7 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
                     <h3 className="font-semibold text-lg group-hover:text-gold transition-colors">
                         {product.name}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                    <p className="text-sm text-gray-500 mt-1 overflow-hidden text-ellipsis display-webkit-box -webkit-line-clamp-2 -webkit-box-orient-vertical">
                         {product.short_description}
                     </p>
 

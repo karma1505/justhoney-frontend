@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect, useMemo } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { fetchProducts, Product, ProductVariant } from '../../utils/api';
-import ProductCard from '../../_components/ProductCard';
+import { fetchProducts, Product } from '../../types/api';
+import ProductCard from '../../components/shop/product-card';
 
 interface FilterState {
   category: string[];
@@ -23,7 +23,7 @@ export default function ShopPage() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
-  const [selectedVariants, setSelectedVariants] = useState<Record<number, ProductVariant>>({});
+
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -79,9 +79,7 @@ export default function ShopPage() {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const handleVariantChange = (productId: number, variant: ProductVariant) => {
-    setSelectedVariants(prev => ({ ...prev, [productId]: variant }));
-  };
+
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center">
@@ -162,7 +160,7 @@ export default function ShopPage() {
                 <select
                   className="p-2 border rounded-md dark:bg-dark dark:border-gray-600 dark:text-white"
                   value={filters.sortBy}
-                  onChange={(e) => setFilters({...filters, sortBy: e.target.value as any})}
+                  onChange={(e) => setFilters({...filters, sortBy: e.target.value as 'price-asc' | 'price-desc' | 'rating'})}
                 >
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
@@ -178,8 +176,6 @@ export default function ShopPage() {
                   <ProductCard
                     key={product.id}
                     product={product}
-                    selectedVariant={selectedVariants[product.id]}
-                    onVariantChange={(variant) => handleVariantChange(product.id, variant)}
                   />
                 ))}
               </div>

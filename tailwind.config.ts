@@ -18,7 +18,11 @@ const config: Config = {
         navy: 'rgb(26 20 35)',
         gold: 'rgb(250 184 3)',
         light: '#ffffff',
-        dark: 'rgb(23 23 23)'
+        dark: 'rgb(23 23 23)',
+        primary: 'rgb(26 20 35)',
+        secondary: 'rgb(250 184 3)',
+        accent: 'rgb(250 184 3)',
+        'dark-light': 'rgb(30 30 30)'
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'system-ui'], // Set as default sans

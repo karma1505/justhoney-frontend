@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
-import { Product, ProductVariant } from '../utils/api';
+import { Product, ProductVariant } from '../../types/api';
 import Image from 'next/image';
-import { StarIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/outline';
 
 export default function ProductDetail({ product }: { product: Product }) {
     const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(

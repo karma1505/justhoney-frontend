@@ -1,10 +1,8 @@
 "use client";
 import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import {
   Bars3Icon,
-  TicketIcon,
-  ShoppingCartIcon,
-  HeartIcon,
   XMarkIcon,
   SunIcon,
   MoonIcon
@@ -44,19 +42,54 @@ function ThemeToggle() {
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    // Handle hash navigation when page loads
+    if (window.location.hash === '#about') {
+      setTimeout(() => {
+        const aboutSection = document.getElementById('about')
+        if (aboutSection) {
+          aboutSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
+
+  const handleAboutClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsMobileMenuOpen(false)
+    
+    if (pathname === '/') {
+      // If already on homepage, just scroll to about section
+      const aboutSection = document.getElementById('about')
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // If on different page, navigate to homepage with hash
+      router.push('/#about')
+    }
+  }
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    const footer = document.querySelector('footer')
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '#', onClick: handleAboutClick },
+    { name: 'Contact', href: '#', onClick: handleContactClick },
   ]
 
-  const accountLinks = [
-    { name: 'My Orders', href: '/orders', icon: TicketIcon },
-    { name: 'Wishlist', href: '/wishlist', icon: HeartIcon },
-    { name: 'Cart', href: '/cart', icon: ShoppingCartIcon },
-  ]
+  const accountLinks = []
 
   return (
     <nav className="bg-navy text-white sticky top-0 z-50 shadow-sm">
@@ -69,28 +102,28 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex space-x-6">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="hover:text-gold transition-colors px-1 py-2 rounded-md text-md font-medium"
-                >
-                  {item.name}
-                </Link>
+                item.name === 'About' || item.name === 'Contact' ? (
+                  <button
+                    key={item.name}
+                    onClick={item.onClick}
+                    className="hover:text-gold transition-colors px-1 py-2 rounded-md text-md font-medium"
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="hover:text-gold transition-colors px-1 py-2 rounded-md text-md font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
             <div className="flex items-center space-x-4 ml-6 border-l border-white/20 pl-6">
               <ThemeToggle />
-              {accountLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="hover:text-gold transition-colors p-2 rounded-full"
-                  title={item.name}
-                >
-                  <item.icon className="h-6 w-6" />
-                </Link>
-              ))}
             </div>
           </div>
 
@@ -120,29 +153,26 @@ export default function Navbar() {
             </div>
 
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-3 py-2 hover:text-gold rounded-md text-base font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-
-            <div className="pt-4 border-t border-white/20 mt-4">
-              {accountLinks.map((item) => (
+              item.name === 'About' || item.name === 'Contact' ? (
+                <button
+                  key={item.name}
+                  onClick={item.onClick}
+                  className="block px-3 py-2 hover:text-gold rounded-md text-base font-medium w-full text-left"
+                >
+                  {item.name}
+                </button>
+              ) : (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center px-3 py-2 hover:text-gold rounded-md text-base font-medium"
+                  className="block px-3 py-2 hover:text-gold rounded-md text-base font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <item.icon className="h-5 w-5 mr-3" />
                   {item.name}
                 </Link>
-              ))}
-            </div>
+              )
+            ))}
+
           </div>
         </div>
       )}

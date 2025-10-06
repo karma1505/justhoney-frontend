@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import HoneyVarieties from "./components/ui/honey-varieties";
 
 interface Founder {
   name: string;
@@ -12,25 +11,57 @@ interface Founder {
   image: string;
 }
 
+
+
 const founders: Founder[] = [
   {
     name: "Ekta Upadhyay",
     role: "Beekeeping & Production",
     designation: "Co-Founder, CEO",
-    image: "/founders/ekta.jpg",
+    image: "/founders/ekta2.jpg",
   },
   {
     name: "Madhu",
     role: "Full Time Queen Bee, Part Time Mascot",
     designation: "Head of Operations",
-    image: "/founders/madhu.jpg",
+    image: "/founders/madhu.png",
   },
   {
     name: "Karmanya Singh",
     role: "Customer Experience",
     designation: "Co-Founder, CTO",
-    image: "/founders/karmanya.jpg",
+    image: "/founders/hero.jpg",
   },
+];
+
+const featuredProducts = [
+  {
+    id: "jamun",
+    name: "Jamun Honey",
+    type: "Wild Forest",
+    price: 550,
+    image: "/products/jamun.jpg",
+    description: "Rare honey from jamun (black plum) flowers, known for its unique taste and medicinal properties.",
+    benefits: ["Antioxidant Rich", "Blood Sugar Control", "Digestive Health"]
+  },
+  {
+    id: "solai",
+    name: "Kashmir Solai Honey",
+    type: "Mountain Pure",
+    price: 650,
+    image: "/products/solai.jpg",
+    description: "Premium honey from high-altitude regions, known for its purity and exceptional quality.",
+    benefits: ["High Altitude", "Pure & Natural", "Premium Quality"]
+  },
+  {
+    id: "multi-floral",
+    name: "Multi-Floral Honey",
+    type: "Garden Blend",
+    price: 350,
+    image: "/products/eucalyptus.jpg",
+    description: "A delightful blend of various flower nectars, offering a balanced taste and aroma.",
+    benefits: ["Balanced Taste", "Versatile", "Daily Use"]
+  }
 ];
 
 export default function Home() {
@@ -49,7 +80,7 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-800 dark:text-gray-200 font-montserrat"
+            className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white dark:text-gray-200 font-montserrat"
           >
             Discover nature&apos;s sweetness with our 100% NATURAL, CHEMICAL and ADULTERATION-FREE honey. Sustainably harvested, from hive to bottle.
           </motion.p>
@@ -68,7 +99,70 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center text-primary dark:text-gold mb-12">
             Our Popular Variants
           </h2>
-          <HoneyVarieties />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white dark:bg-white dark:text-black rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full"
+              >
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute top-4 right-4 bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    {product.type}
+                  </div>
+                </div>
+                
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold text-primary mb-2">
+                    {product.name}
+                  </h3>
+                  
+                  <p className="text-gray-600 mb-4 text-sm flex-grow">
+                    {product.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {product.benefits.map((benefit, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-accent/10 text-accent px-2 py-1 rounded-full text-xs"
+                      >
+                        {benefit}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-2xl font-bold text-primary">
+                      ₹{product.price}
+                    </span>
+                    <span className="text-sm text-gray-500">per 500g</span>
+                  </div>
+                  
+                  <div className="flex gap-3 mt-auto">
+                    <Link
+                      href="/shop"
+                      className="flex-1 bg-gold hover:bg-yellow-600 text-white text-center py-2 px-4 rounded-lg transition-colors font-medium"
+                    >
+                      Explore
+                    </Link>
+                    <button className="bg-primary hover:bg-navy text-white py-2 px-4 rounded-lg transition-colors font-medium">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -101,7 +195,7 @@ export default function Home() {
 </p>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              What started as a small apiary in Ekta&apos;s orchards now spans all over India, with Karmanya Singh joining as CTO in 2021 to buzzify our tech. Together, this dynamic duo (plus our 50,000+ winged employees) have shipped nearly over 10000 jars across 8 countries!
+              What started as a small apiary in Ekta&apos;s orchards now spans all over India, with Karmanya Singh joining as Co-Founder in 2021 to buzzify our tech in partnership with Nimbus Technologies. Together, this dynamic duo (plus our 50,000+ winged employees) have shipped nearly over 10000 jars across 8 countries!
             </p>
           </motion.div>
 
@@ -116,12 +210,18 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="bg-white dark:bg-white dark:text-black rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative h-64 w-full">
+                <div className="relative h-64 w-full overflow-hidden">
                   <Image
                     src={founder.image}
                     alt={founder.name}
                     fill
-                    className="object-cover rounded-t-xl"
+                    className={`rounded-t-xl ${
+                      founder.name === "Ekta Upadhyay"
+                        ? "object-cover scale-110 object-top"
+                        : founder.name === "Karmanya Singh"
+                        ? "object-cover scale-100"
+                        : "object-contain"
+                    }`}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
@@ -153,28 +253,28 @@ export default function Home() {
               title: "First Hive To Home Experience",
               description:
                 "First order recieved from Gurgaon, Haryana. By the end of opening week, we had 124 customers... ",
-              image: "/timeline/first-hive.jpg",
+              image: "/timeline/first.png",
             },
             {
               year: "2023",
               title: "Expanded Delivery To Delhi-NCR",
               description:
-                "As word spread about our honey&apos;s exceptional quality, demand quickly grew beyond our immediate circle...",
-              image: "/timeline/delhi-ncr.jpg",
+                "As word spread about our honey's exceptional quality, demand quickly grew beyond our immediate circle...",
+              image: "/timeline/delhincr.png",
             },
             {
               year: "2024",
               title: "Pan-India Operations",
               description:
                 "This was our breakthrough year as we established customers from 18 states in India...",
-              image: "/timeline/pan-india.jpg",
+              image: "/timeline/india.webp",
             },
             {
               year: "2025",
               title: "Global Honey Domination",
               description:
                 "Today, JustHoney has evolved into India’s premier ethical honey brand with a global footprint...",
-              image: "/timeline/global.jpg",
+              image: "/timeline/global.png",
             },
           ].map((item) => (
             <div
@@ -198,14 +298,14 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="w-full md:w-1/2">
+                  <div className="w-full md:w-2/5">
                     <div className="sticky top-24">
-                      <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-xl">
+                      <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-xl bg-white">
                         <Image
                           src={item.image}
                           alt={item.title}
                           fill
-                          className="object-cover transition-transform duration-500 hover:scale-105"
+                          className="object-contain transition-transform duration-500 hover:scale-105 rounded-3xl"
                           sizes="(max-width: 768px) 100vw, 50vw"
                         />
                       </div>

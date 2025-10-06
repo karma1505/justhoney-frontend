@@ -37,7 +37,8 @@ export default function Footer() {
               <li><Link href="/about/" className="hover:text-gold">Our Story</Link></li>
               <li><Link href="/shop" className="hover:text-gold">Shop</Link></li>
               <li><Link href="/contact" className="hover:text-gold">Contact</Link></li>
-              <li><Link href="#" className="hover:text-gold">Track Order</Link></li>
+              <li><Link href="/faq" className="hover:text-gold">FAQ</Link></li>
+              <li><Link href="#" className="hover:text-gold">Wholesale Inquiry</Link></li>
             </ul>
           </div>
 
@@ -75,10 +76,6 @@ export default function Footer() {
           <p className="text-sm">
             © {new Date().getFullYear()} JustHoney. All rights reserved.
           </p>
-          <div className="mt-2 flex justify-center space-x-4">
-            <Link href="#" className="text-sm hover:text-gold">FAQ</Link>
-            <Link href="#" className="text-sm hover:text-gold">Wholesale Inquiry</Link>
-          </div>
         </div>
       </div>
     </footer>

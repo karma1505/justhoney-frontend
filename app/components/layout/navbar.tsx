@@ -89,8 +89,6 @@ export default function Navbar() {
     { name: 'Contact', href: '#', onClick: handleContactClick },
   ]
 
-  const accountLinks = []
-
   return (
     <nav className="bg-navy text-white sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -212,7 +212,7 @@ export default function ShopPage() {
             viewport={{ once: true }}
             className="text-3xl font-bold text-primary dark:text-gold mb-6"
           >
-            Can't Decide? We're Here to Help!
+            Can&apos;t Decide? We&apos;re Here to Help!
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

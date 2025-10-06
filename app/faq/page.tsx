@@ -162,7 +162,7 @@ export default function FAQPage() {
             viewport={{ once: true }}
             className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
           >
-            Can't find the answer you're looking for? Our honey experts are here to help you with any questions about our products.
+            Can&apos;t find the answer you&apos;re looking for? Our honey experts are here to help you with any questions about our products.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
